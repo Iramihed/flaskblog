@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Все статьи на сайте
+{% endblock %}
+
+
+{% block body %}
+      <div class="container mt-5">
+          <h1>Все статьи на сайте</h1>
+      {% if articles|length > 0 %}
+          <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://2.bp.blogspot.com/-joVtT8k8MRI/VOTneNEJPhI/AAAAAAAADZ0/wHbnKcaElVY/s1600/Writing.png" width="1138" height="449">
+          {% for el in articles %}
+          <div class="alert alert-info">
+               <h2>{{ el.title }}</h2>
+               <p>{{ el.intro }}</p>
+               <p>{{ el.text }}</p>
+               <p>{{ el.author }}</p>
+               <p>{{ el.branch }}</p>
+               <p><b>Дата:{{ el.date.date() }}</b></p>
+               <a href="/posts/{{ el.id }}" class="btn btn-warning">Детальнее</a>
+          </div>
+          {% endfor %}
+              {% else %}
+              <p>У нас еще нет статей на сайте</p>
+              {% endif %}
+      </div>
+{% endblock %}
